@@ -24,16 +24,15 @@ function add() {
   const subjectsBetyg = document.querySelector(".subjects");
   const selectSub = document.createElement("select");
   selectSub.setAttribute("class", "sel");
+  selectSub.setAttribute("onchange", `selectedSub(sub${id})`);
   const subTitle = document.createElement("option");
   subTitle.setAttribute("value", "empty");
-  subTitle.setAttribute("onclick", `selectedSub(sub${id})`);
   selectSub.setAttribute("id", `sub${id}`);
   subTitle.textContent = "اختر المادة";
   selectSub.appendChild(subTitle);
   subjects.forEach((element) => {
     const option = document.createElement("option");
     option.setAttribute("value", element);
-    option.setAttribute("onclick", `selectedSub(sub${id})`);
     option.textContent = element;
     selectSub.appendChild(option);
   });
@@ -103,6 +102,7 @@ function unClicked(betygSel) {
 }
 
 function selectedSub(subject) {
+  console.log("test");
   if (document.getElementById(subject.id).value != "empty") {
     betyg.forEach((element) => {
       const selectedByteg = document.getElementById(
