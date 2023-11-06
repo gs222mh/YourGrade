@@ -26,14 +26,14 @@ function add() {
   selectSub.setAttribute("class", "sel");
   const subTitle = document.createElement("option");
   subTitle.setAttribute("value", "empty");
-  subTitle.setAttribute("onfocus", `selectedSub(sub${id})`);
+  subTitle.setAttribute("onfocus", `javascript:selectedSub(sub${id})`);
   selectSub.setAttribute("id", `sub${id}`);
   subTitle.textContent = "اختر المادة";
   selectSub.appendChild(subTitle);
   subjects.forEach((element) => {
     const option = document.createElement("option");
     option.setAttribute("value", element);
-    option.setAttribute("onfocus", `selectedSub(sub${id})`);
+    option.setAttribute("onfocus", `javascript:selectedSub(sub${id})`);
 
     option.textContent = element;
     selectSub.appendChild(option);
