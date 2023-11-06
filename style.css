@@ -27,7 +27,7 @@ input {
 }
 .subjects {
   display: grid;
-  grid-template-columns: repeat(9, 2.5rem);
+  grid-template-columns: repeat(9, 2rem);
   gap: 1em;
 }
 .sel {
