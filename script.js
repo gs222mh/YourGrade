@@ -25,7 +25,8 @@ function add() {
   const selectSub = document.createElement("select");
   selectSub.setAttribute("class", "sel");
   const subTitle = document.createElement("option");
-  subTitle.setAttribute("value", "");
+  subTitle.setAttribute("value", "empty");
+  subTitle.setAttribute("onclick", `selectedSub(sub${id})`);
   selectSub.setAttribute("id", `sub${id}`);
   subTitle.textContent = "اختر المادة";
   selectSub.appendChild(subTitle);
@@ -104,12 +105,19 @@ function unClicked(betygSel) {
 }
 
 function selectedSub(subject) {
-  if (document.getElementById(subject.id).value != "اختر المادة") {
+  if (document.getElementById(subject.id).value != "empty") {
     betyg.forEach((element) => {
       const selectedByteg = document.getElementById(
         element + subject.id.substring(3, subject.id.length)
       ); //D3
       selectedByteg.classList.remove("disabled");
+    });
+  } else if (document.getElementById(subject.id).value == "empty") {
+    betyg.forEach((element) => {
+      const selectedByteg = document.getElementById(
+        element + subject.id.substring(3, subject.id.length)
+      ); //D3
+      selectedByteg.classList.add("disabled");
     });
   }
 }
