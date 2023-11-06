@@ -24,7 +24,7 @@ function add() {
   const subjectsBetyg = document.querySelector(".subjects");
   const selectSub = document.createElement("select");
   selectSub.setAttribute("class", "sel");
-  selectSub.setAttribute("onchange", `selectedSub(sub${id})`);
+  selectSub.setAttribute("onchange", `javascript:selectedSub(sub${id})`);
   const subTitle = document.createElement("option");
   subTitle.setAttribute("value", "empty");
   selectSub.setAttribute("id", `sub${id}`);
