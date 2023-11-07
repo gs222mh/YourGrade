@@ -1,21 +1,58 @@
 const subjects = [
-  "Svenska 1",
-  "Svenska 2",
-  "Svenska 3",
-  "Engelska 5",
-  "Engelska 6",
-  "Engelska 7",
-  "Matematik 1a",
-  "Matematik 2a",
-  "Matematik 1b",
-  "Matematik 2b",
-  "Matematik 3b",
-  "Matematik 1c",
-  "Matematik 2c",
-  "Matematik 3c",
-  "Matematik 4",
-  "Matematik 5",
+  { sub: "Svenska 1", point: 100 },
+  { sub: "Svenska 2", point: 100 },
+  { sub: "Svenska 3", point: 100 },
+  { sub: "Engelska 5", point: 100 },
+  { sub: "Engelska 6", point: 100 },
+  { sub: "Engelska 7", point: 100 },
+  { sub: "Matematik 1a", point: 100 },
+  { sub: "Matematik 2a", point: 100 },
+  { sub: "Matematik 2a", point: 100 },
+  { sub: "Matematik 2b", point: 100 },
+  { sub: "Matematik 2c", point: 100 },
+  { sub: "Matematik 3a", point: 100 },
+  { sub: "Matematik 3b", point: 100 },
+  { sub: "Matematik 3c", point: 100 },
+  { sub: "Matematik 4", point: 100 },
+  { sub: "Matematik 5", point: 100 },
+  { sub: "Naturkunskap 1a1", point: 50 },
+  { sub: "Naturkunskap 1a2", point: 50 },
+  { sub: "Naturkunskap 1b", point: 100 },
+  { sub: "Naturkunskap 2", point: 100 },
+  { sub: "Fysik 1a", point: 150 },
+  { sub: "Fysik 1b1", point: 100 },
+  { sub: "Fysik 1b2", point: 50 },
+  { sub: "Fysik 2", point: 100 },
+  { sub: "Fysik 3", point: 100 },
+  { sub: "Kemi 1", point: 100 },
+  { sub: "Kemi 2", point: 100 },
+  { sub: "Biologi 1", point: 100 },
+  { sub: "Biologi 2", point: 100 },
+  { sub: "Bioteknik", point: 100 },
+  { sub: "Geografi 1", point: 100 },
+  { sub: "Geografi 2", point: 100 },
+  { sub: "Geografiska informationssystem", point: 100 },
+  { sub: "Historia 1a1", point: 50 },
+  { sub: "Historia 1a2", point: 50 },
+  { sub: "Historia 1b", point: 100 },
+  { sub: "Historia 2a", point: 100 },
+  { sub: "Historia 2b", point: 100 },
+  { sub: "Historia 3", point: 100 },
+  { sub: "Psykologi 1", point: 50 },
+  { sub: "Psykologi 2a", point: 50 },
+  { sub: "Psykologi 2b", point: 50 },
+  { sub: "Religionskunskap 1", point: 50 },
+  { sub: "Religionskunskap 2", point: 50 },
+  { sub: "Religionskunskap – specialisering", point: 100 },
+  { sub: "Samhällskunskap 1a1", point: 50 },
+  { sub: "Samhällskunskap 1a2", point: 50 },
+  { sub: "Samhällskunskap 1b", point: 100 },
+  { sub: "Samhällskunskap 2", point: 100 },
+  { sub: "Samhällskunskap 3", point: 100 },
+  { sub: "Internationell ekonomi", point: 100 },
+  { sub: "Internationella relationer", point: 100 },
 ];
+
 const betyg = ["A", "B", "C", "D", "E"];
 let id = 0;
 function add() {
@@ -24,7 +61,7 @@ function add() {
   const subjectsBetyg = document.querySelector(".subjects");
   const selectSub = document.createElement("select");
   selectSub.setAttribute("class", "sel");
-  selectSub.setAttribute("onchange", `javascript:selectedSub(sub${id})`);
+  selectSub.setAttribute("onchange", `selectedSub(sub${id})`);
   const subTitle = document.createElement("option");
   subTitle.setAttribute("value", "empty");
   selectSub.setAttribute("id", `sub${id}`);
@@ -32,8 +69,8 @@ function add() {
   selectSub.appendChild(subTitle);
   subjects.forEach((element) => {
     const option = document.createElement("option");
-    option.setAttribute("value", element);
-    option.textContent = element;
+    option.setAttribute("value", element.sub);
+    option.textContent = element.sub;
     selectSub.appendChild(option);
   });
   subjectsBetyg.appendChild(selectSub);
