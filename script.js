@@ -43,7 +43,7 @@ const subjects = [
   { sub: "Psykologi 2b", point: 50 },
   { sub: "Religionskunskap 1", point: 50 },
   { sub: "Religionskunskap 2", point: 50 },
-  { sub: "Religionskunskap – specialisering", point: 100 },
+  { sub: "Religionskunskap specialisering", point: 100 },
   { sub: "Samhällskunskap 1a1", point: 50 },
   { sub: "Samhällskunskap 1a2", point: 50 },
   { sub: "Samhällskunskap 1b", point: 100 },
@@ -53,7 +53,13 @@ const subjects = [
   { sub: "Internationella relationer", point: 100 },
 ];
 
-const betyg = ["A", "B", "C", "D", "E"];
+const betyg = [
+  { grade: "A", value: 20 },
+  { grade: "B", value: 17.5 },
+  { grade: "C", value: 15 },
+  { grade: "D", value: 12.5 },
+  { grade: "E", value: 10 },
+];
 let id = 0;
 function add() {
   id = id++;
@@ -77,9 +83,9 @@ function add() {
   betyg.forEach((element) => {
     const betygBtn = document.createElement("button");
     betygBtn.setAttribute("class", "grade disabled");
-    betygBtn.setAttribute("id", `${element}${id}`);
-    betygBtn.setAttribute("onclick", `checkClicked(${element}${id})`);
-    betygBtn.textContent = element;
+    betygBtn.setAttribute("id", `${element.grade}${id}`);
+    betygBtn.setAttribute("onclick", `checkClicked(${element.grade}${id})`);
+    betygBtn.textContent = element.grade;
     subjectsBetyg.appendChild(betygBtn);
   });
 
@@ -97,7 +103,7 @@ function del(id) {
   const subject = document.querySelector(".subjects");
   subject.removeChild(subject.children[`sub${id}`]);
   betyg.forEach((element) => {
-    subject.removeChild(subject.children[`${element}${id}`]);
+    subject.removeChild(subject.children[`${element.grade}${id}`]);
   });
   subject.removeChild(subject.children[`del${id}`]);
 }
@@ -112,12 +118,15 @@ function checkClicked(betygSel) {
 
 function clicked(betygSel) {
   betyg.forEach((element) => {
-    if (betygSel.id == element + betygSel.id.substring(1, betygSel.id.length)) {
+    if (
+      betygSel.id ==
+      element.grade + betygSel.id.substring(1, betygSel.id.length)
+    ) {
       const selectedByteg = document.getElementById(betygSel.id);
       selectedByteg.classList.add("clicked");
     } else {
       const unselectedByteg = document.getElementById(
-        element + betygSel.id.substring(1, betygSel.id.length)
+        element.grade + betygSel.id.substring(1, betygSel.id.length)
       );
 
       unselectedByteg.classList.add("disabled");
@@ -128,31 +137,39 @@ function clicked(betygSel) {
 function unClicked(betygSel) {
   betyg.forEach((element) => {
     const selectedByteg = document.getElementById(
-      element + betygSel.id.substring(1, betygSel.id.length)
+      element.grade + betygSel.id.substring(1, betygSel.id.length)
     ); //D3
     selectedByteg.classList.remove(
       document.getElementById(
-        element + betygSel.id.substring(1, betygSel.id.length)
+        element.grade + betygSel.id.substring(1, betygSel.id.length)
       ).classList[1]
     );
   });
 }
 
 function selectedSub(subject) {
-  console.log("test");
   if (document.getElementById(subject.id).value != "empty") {
     betyg.forEach((element) => {
       const selectedByteg = document.getElementById(
-        element + subject.id.substring(3, subject.id.length)
+        element.grade + subject.id.substring(3, subject.id.length)
       ); //D3
+
       selectedByteg.classList.remove("disabled");
     });
   } else if (document.getElementById(subject.id).value == "empty") {
     betyg.forEach((element) => {
       const selectedByteg = document.getElementById(
-        element + subject.id.substring(3, subject.id.length)
+        element.grade + subject.id.substring(3, subject.id.length)
       ); //D3
       selectedByteg.classList.add("disabled");
     });
+  }
+}
+
+function checkAll() {
+  if (document.getElementById("myValue").value <= 20) {
+    console.log(document.getElementById("myValue").value);
+  } else if (document.getElementById("myValue").value === null) {
+    alert("Hello! I am an alert box!!");
   }
 }
