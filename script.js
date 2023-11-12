@@ -208,28 +208,26 @@ function selectedSub(subject) {
 
 function checkAll() {
   document.getElementById("result").innerHTML = "";
-  if (id != 0 && theGradeIsWriten()) {
-    if (theLastSub()) {
-      donebetyg = [];
-      donesub = [];
-      let allChild = document.querySelector(".subjects").children.length; //all children
-      for (let i = 0; i < allChild; i++) {
-        if (i % 7 == 0) {
-          doneSub.push(document.querySelector(".subjects").childNodes[i].value);
+  if (id != 0 && theGradeIsWriten() && theLastSub() == true) {
+    donebetyg = [];
+    donesub = [];
+    let allChild = document.querySelector(".subjects").children.length; //all children
+    for (let i = 0; i < allChild; i++) {
+      if (i % 7 == 0) {
+        doneSub.push(document.querySelector(".subjects").childNodes[i].value);
+      }
+    }
+    for (let x = 0; x < ids.length; x++) {
+      betyg.forEach((betygSub) => {
+        if (
+          document.getElementById(`${betygSub.grade}${ids[x]}`).classList[1] ==
+          "clicked"
+        ) {
+          donebetyg.push(
+            document.getElementById(`${betygSub.grade}${ids[x]}`).id[0]
+          );
         }
-      }
-      for (let x = 0; x < ids.length; x++) {
-        betyg.forEach((betygSub) => {
-          if (
-            document.getElementById(`${betygSub.grade}${ids[x]}`)
-              .classList[1] == "clicked"
-          ) {
-            donebetyg.push(
-              document.getElementById(`${betygSub.grade}${ids[x]}`).id[0]
-            );
-          }
-        });
-      }
+      });
     }
     cal();
   }
@@ -293,7 +291,7 @@ function cal() {
       }
     }
   });
-
+  
   let result = (Mprel * 2500 + 1.2 * B) / (2500 + A) + MK;
   document.getElementById("result").innerHTML = result
     .toString()
