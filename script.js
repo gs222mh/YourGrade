@@ -292,5 +292,5 @@ function cal() {
   });
 
   let result = (Mprel * 2500 + 1.2 * B) / (2500 + A) + MK;
-  document.getElementById("result").textContent = result;
+  document.getElementById("result").innerHTML = result;
 }
