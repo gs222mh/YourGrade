@@ -73,3 +73,21 @@ p {
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
 }
+.sub-title {
+  font-size: large;
+}
+a {
+  text-decoration: none;
+  color: blue;
+}
+#gradeImg {
+  width: 20rem;
+  height: 30rem;
+}
+.result {
+  border: 5px solid black;
+  padding: 2px;
+  font-weight: bold;
+  font-size: 50px;
+  color: #db4a11;
+}
