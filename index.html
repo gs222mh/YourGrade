@@ -9,12 +9,16 @@
   </head>
   <body>
     <div class="container">
-      <p>أدخل معدل الشهادة الثانوية</p>
-      <input id="myValue" type="number" placeholder="Max 20.0" />
+      <p>أدخل معدل الشهادة الثانوية بعد التعديل</p>
+      <p>لمعرفة معدل شهادتك الثانوية</p>
+      <p><a href="./betyg.html">اضغط هنا</a></p>
+      <p class="sub-title">الرجاء ادخال أرقام فقط</p>
+      <input id="myValue" type="number" placeholder="Max 20.00" />
       <p>ادخل المادة و الشهادة التي حصلت عليها</p>
       <div class="subjects"></div>
       <button class="add" onclick="add()">+ أضف مادة</button>
-      <button class="add" onclick="cal()">احسب المعدل</button>
+      <button class="add" onclick="checkAll()">احسب المعدل</button>
+      <p id="result" class="result"></p>
     </div>
   </body>
 </html>
