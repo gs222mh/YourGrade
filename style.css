@@ -85,9 +85,8 @@ a {
   height: 30rem;
 }
 .result {
-  border: 5px solid black;
   padding: 2px;
-  font-weight: bold;
+  font-weight: bolder;
   font-size: 40px;
   color: #db4a11;
 }
