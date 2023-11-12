@@ -207,9 +207,11 @@ function selectedSub(subject) {
 }
 
 function checkAll() {
+  document.getElementById("result").innerHTML = "";
   if (id != 0 && theGradeIsWriten()) {
     if (theLastSub()) {
       donebetyg = [];
+      donesub = [];
       let allChild = document.querySelector(".subjects").children.length; //all children
       for (let i = 0; i < allChild; i++) {
         if (i % 7 == 0) {
@@ -255,7 +257,7 @@ function theGradeIsWriten() {
 
 function cal() {
   let Mprel = document.getElementById("myValue").value;
-  let MK;
+  let MK = 0;
   if (Mprel >= 10 && Mprel <= 11.99) {
     MK = 0.5;
   }
@@ -274,6 +276,7 @@ function cal() {
   if (Mprel >= 16 && Mprel <= 16.99) {
     MK = 1.75;
   }
+
   let A = 0;
   let B = 0;
   doneSub.forEach((element) => {
@@ -292,5 +295,7 @@ function cal() {
   });
 
   let result = (Mprel * 2500 + 1.2 * B) / (2500 + A) + MK;
-  document.getElementById("result").innerHTML = result.substring(0,6);
+  document.getElementById("result").innerHTML = result
+    .toString()
+    .substring(0, 5);
 }
